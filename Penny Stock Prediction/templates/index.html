@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Price Prediction</title>
+</head>
+<body>
+    <div>
+        <h1>Stock Price Prediction for ZOM</h1>
+        <form action="/predict" method="post">
+            <button type="submit">Predict</button>
+        </form>
+        {% if prediction_results %}
+            <h2>Predicted prices for ZOM for the next 30 trading days:</h2>
+            <ul>
+                {% for date, price in prediction_results.items() %}
+                    <li>{{ date }}: ${{ price }}</li>
+                {% endfor %}
+            </ul>
+            <img src="{{ plot_url }}" alt="Predicted Stock Prices">
+        {% endif %}
+    </div>
+</body>
+</html>
